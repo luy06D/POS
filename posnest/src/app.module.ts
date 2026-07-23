@@ -7,7 +7,6 @@ import { typeOrmConfig } from './config/typeorm.config';
 import { CategoriesModule } from './categories/categories.module';
 
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({
