@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { typeOrmConfig } from './config/typeorm.config';
 import { CategoriesModule } from './categories/categories.module';
+import { ProductsModule } from './products/products.module';
 
 
 @Module({
@@ -16,7 +17,8 @@ import { CategoriesModule } from './categories/categories.module';
       useFactory: typeOrmConfig,
       inject: [ConfigService]
     }),
-    CategoriesModule],
+    CategoriesModule,
+    ProductsModule],
   controllers: [AppController],
   providers: [AppService],
 })
