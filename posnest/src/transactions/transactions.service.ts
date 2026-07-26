@@ -35,21 +35,22 @@ export class TransactionsService {
           errors.push(`El articulo ${product.name} excede la cantidad disponible`)
           throw new BadRequestException(errors)
         }
-
+       
         product.inventory -= contents.quantity
 
+        await transactionEntityManager.save(transaction)
+  
+      
         // Create transaccionContent instance
         const transaccionContent = new TransactionContents()
         transaccionContent.quantity = contents.quantity
         transaccionContent.price = contents.price
         transaccionContent.product = product
         transaccionContent.transaction = transaction
-
-        await transactionEntityManager.save(transaction)
+        
         await transactionEntityManager.save(transaccionContent)
-      }
-
       
+      }
     })
 
     return "Venta almacenada correctamente."
@@ -111,7 +112,12 @@ export class TransactionsService {
       await this.productRepository.save(product)
 
       const transaccionContent = await this.transactionContentRepository.findOneBy({id: content.id})
-      await this.transactionContentRepository.remove(transaccionContent!)
+
+      if (!transaccionContent) {
+        throw new NotFoundException('El detalle de la transacción no existe');
+      }
+
+      await this.transactionContentRepository.remove(transaccionContent)
     }
 
     await this.transactionRepository.remove(transaction)
