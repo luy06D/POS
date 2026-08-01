@@ -28,7 +28,7 @@ export default async function MainNav() {
             key={category.id}
             href={`/${category.id}`}
             className="text-white hover:text-green-400 font-bold  p-2"
-            a
+
           >{category.name}</Link>
         ))}
       </nav>
