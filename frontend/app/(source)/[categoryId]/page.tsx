@@ -6,8 +6,13 @@ import { redirect } from "next/navigation"
 type Params = Promise<{ categoryId: string }>
 
 async function getProducts(categoryId: string) {
+    console.log('Obteniendo productos...', categoryId)
   const url = `${process.env.API_URL}categories/${categoryId}?products=true`
-  const req = await fetch(url)
+  const req = await fetch(url, {
+    next: {
+      tags: ['products-by-category']
+    }
+  })
   const json = await req.json()
   if(!req.ok){
     redirect('/1')

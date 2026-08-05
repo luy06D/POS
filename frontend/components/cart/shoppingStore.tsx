@@ -4,6 +4,7 @@ import { useStore } from "@/src/store"
 import ShoppingCartItem from "./shoppingCartItem"
 import Amount from "./Amount"
 import CouponForm from "./couponForm"
+import SubmitOrderForm from "./SubmitOrderForm"
 
 export default function shoppingStore() {
 
@@ -40,6 +41,7 @@ export default function shoppingStore() {
             />
           </dl>
           <CouponForm />
+          <SubmitOrderForm/>
 
         </>
       ) : (

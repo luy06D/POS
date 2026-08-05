@@ -40,8 +40,30 @@ export const CouponResponseSchema = z.object({
 
 })
 
+const OrderContentSchema = z.object({
+  productId: z.number(),
+  quantity: z.number(),
+  price: z.number()
+})
+export const OrderSchema = z.object({
+  total: z.number(),
+  coupon: z.string(),
+  contents: z.array(OrderContentSchema).min(1, {message: 'El Carrito no puede ir vacio'})
+})
+
 
 export type Product = z.infer<typeof ProductSchema>
 export type ShoppingCart = z.infer<typeof ShoppingCartSchema>
 export type CardItem = z.infer<typeof ShoppingCartContentSchema>
 export type Coupon = z.infer<typeof CouponResponseSchema> 
+
+
+/** Success / Error Response */
+export const SuccessResponseSchema = z.object({
+  message: z.string()
+})
+export const ErrorResponseSchema = z.object({
+  message: z.array(z.string()),
+  error: z.string(),
+  statusCode: z.number()
+})

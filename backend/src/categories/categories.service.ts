@@ -32,6 +32,11 @@ export class CategoriesService {
     if(product === 'true'){
       options.relations = {
         product: true
+      },
+      options.order = {
+        product: {
+          id: 'DESC'
+        }
       }
     }
 
