@@ -30,7 +30,12 @@ export default async function MainNav() {
             className="text-white hover:text-green-400 font-bold  p-2"
             
           >{category.name}</Link>
-        ))}
+        ))},
+
+        <Link
+        className="rounded bg-green-400 font-bold py-2 px-10"
+        href={'/admin/sales'}
+        >Panel de Administración</Link>
       </nav>
     </header>
 
