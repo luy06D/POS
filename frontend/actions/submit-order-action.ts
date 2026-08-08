@@ -1,7 +1,7 @@
 "use server"
 
 import { ErrorResponseSchema, OrderSchema, SuccessResponseSchema } from "@/src/schemas"
-import { revalidateTag, updateTag } from "next/cache"
+import { updateTag } from "next/cache"
 
  
 type actionStateType = {

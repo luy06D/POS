@@ -6,8 +6,27 @@ export const ProductSchema = z.object({
     image: z.string(),
     price: z.coerce.number(),
     inventory: z.number(),
-    // categoryId: z.number()
+    //categoryId: z.number()
 })
+
+
+export const ProductResponseSchema = z.object({
+  products: z.array(ProductSchema),
+  total : z.number()
+})
+
+
+/** Registro de productos */
+export const ProductFormSchema = z.object({
+  name: z.string()
+          .min(1, {message: 'El Nombre del Producto no puede ir vacio'}),
+  price: z.coerce.number({message: 'Precio no válido'})
+          .min(1, {message: 'El Precio debe ser mayor a 0'}),
+  inventory: z.coerce.number({message: 'Inventario no válido'})
+          .min(1, {message: 'El inventario debe ser mayor a 0'}),
+  categoryId: z.coerce.number({message: 'La Categoria no es válida'})
+})
+
 
 export const CategorySchema = z.object({
     id: z.number(),
@@ -70,11 +89,24 @@ export const ContentsSchema = z.object({
   export const TransactionsResponseSchema = z.array(TransactionResponseSchema)
 
 
+  // OPCIONAL POR EL MOMENTO TODO: SCHEMA PARA LA EDICION ProductForm.tsx
+
+export const ProductS = z.object({
+    id: z.number(),
+    name: z.string(),
+    image: z.string(),
+    price: z.coerce.number(),
+    inventory: z.number(),
+    category: CategorySchema
+})
+export type ProductType = z.infer<typeof ProductS>
+
 export type Product = z.infer<typeof ProductSchema>
 export type ShoppingCart = z.infer<typeof ShoppingCartSchema>
 export type CardItem = z.infer<typeof ShoppingCartContentSchema>
 export type Coupon = z.infer<typeof CouponResponseSchema> 
 export type Transaction = z.infer<typeof TransactionResponseSchema>
+
 
 
 /** Success / Error Response */

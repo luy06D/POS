@@ -10,7 +10,7 @@ export default function AdminNav() {
 
         <div className="flex gap-2 items-center">
             <Link
-                href={'/admin/products'}
+                href={'/admin/product'}
                 className="rounded text-white font-bold p-2"
             >Productos</Link>
 

@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 
 
 export default function Heading({children} : {children: React.ReactNode}) {
