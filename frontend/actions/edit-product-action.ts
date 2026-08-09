@@ -13,6 +13,7 @@ export async function EditProduct(idProduct: Product['id'],  prevState: actionSt
     const productData = {
         name : formData.get('name'),
         price : formData.get('price'),
+        image : formData.get('image'),
         inventory : formData.get('inventory'),
         categoryId : formData.get('categoryId')
     }
@@ -38,6 +39,7 @@ export async function EditProduct(idProduct: Product['id'],  prevState: actionSt
         body: JSON.stringify({
             name: product.data.name,
             price: product.data.price,
+            image: product.data.image,
             inventory: product.data.inventory,
             categoryId : product.data.categoryId
         })

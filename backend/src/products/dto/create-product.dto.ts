@@ -10,6 +10,9 @@ export class CreateProductDto {
     @IsNumber({maxDecimalPlaces: 2}, {message: 'Precio no valido'})
     price!: number
 
+    @IsNotEmpty({message: 'La imagen del producto es obligatorio'})
+    image!: string
+
     @IsNotEmpty({message: 'La cantidad no puede ir vacia'})
     @IsNumber({maxDecimalPlaces: 0}, {message: 'Cantida no válida'})
     inventory!: number
